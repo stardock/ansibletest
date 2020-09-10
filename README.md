@@ -44,7 +44,10 @@ root      3484  2073  0 22:04 pts/0    00:00:00 grep v2ray
 
 那么问题来了，如何push到所有小鸡？
 ```
+##批量更改v2启动模式
 ansible webservers -m shell -a 'sed -i "s/# User=/User=/g" /etc/systemd/system/v2ray.service;sed -i "s/# Group=/Group=/g" /etc/systemd/system/v2ray.service;chown -R v2ray:v2ray /var/log/v2ray;systemctl daemon-reload;systemctl restart v2ray'
-
 ansible webservers -m shell -a "ps aux | grep v2"
+
+##批量删除v2日志
+ansible webservers -m shell -a "rm -f /var/log/v2ray/error.log; touch /var/log/v2ray/error.log; chown -R v2ray:v2ray /var/log/v2ray"
 ```  
