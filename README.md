@@ -51,3 +51,5 @@ ansible webservers -m shell -a "ps aux | grep v2"
 ##批量删除v2日志
 ansible webservers -m shell -a "rm -f /var/log/v2ray/error.log; touch /var/log/v2ray/error.log; chown -R v2ray:v2ray /var/log/v2ray"
 ```  
+
+REF: https://github.com/v2ray/v2ray-core/issues/1011  
